@@ -1,0 +1,8 @@
+name: Jetpack
+version: '${project.version}'
+main: com.ashkiano.jetpack.Jetpack
+api-version: '1.16'
+author: AshKiano
+commands:
+  jetpack:
+    description: Gives the player a jetpack.
