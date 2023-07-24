@@ -1,3 +1,16 @@
-com\ashkiano\jetpack\JetpackCommand.class
+com\ashkiano\jetpack\Metrics$AdvancedPie.class
+com\ashkiano\jetpack\Metrics$AdvancedBarChart.class
+com\ashkiano\jetpack\Metrics$MetricsBase.class
+com\ashkiano\jetpack\Metrics$SingleLineChart.class
+com\ashkiano\jetpack\Metrics$1.class
+com\ashkiano\jetpack\Metrics$SimplePie.class
 com\ashkiano\jetpack\Jetpack.class
+com\ashkiano\jetpack\Metrics$JsonObjectBuilder.class
+com\ashkiano\jetpack\Metrics$SimpleBarChart.class
+com\ashkiano\jetpack\Metrics$CustomChart.class
+com\ashkiano\jetpack\Metrics.class
+com\ashkiano\jetpack\JetpackCommand.class
+com\ashkiano\jetpack\Metrics$DrilldownPie.class
+com\ashkiano\jetpack\Metrics$JsonObjectBuilder$JsonObject.class
+com\ashkiano\jetpack\Metrics$MultiLineChart.class
 com\ashkiano\jetpack\JetpackListener.class
