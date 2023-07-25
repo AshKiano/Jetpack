@@ -12,5 +12,6 @@ com\ashkiano\jetpack\Metrics.class
 com\ashkiano\jetpack\JetpackCommand.class
 com\ashkiano\jetpack\Metrics$DrilldownPie.class
 com\ashkiano\jetpack\Metrics$JsonObjectBuilder$JsonObject.class
+com\ashkiano\jetpack\JetpackListener$1.class
 com\ashkiano\jetpack\Metrics$MultiLineChart.class
 com\ashkiano\jetpack\JetpackListener.class
