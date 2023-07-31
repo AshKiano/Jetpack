@@ -1,6 +1,7 @@
 package com.ashkiano.jetpack;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -38,6 +39,7 @@ public class JetpackCommand implements CommandExecutor {
 
         ItemStack jetpack = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) jetpack.getItemMeta();
+        meta.setColor(Color.ORANGE);
         meta.setLore(Arrays.asList(JETPACK_LORE));
         jetpack.setItemMeta(meta);
 

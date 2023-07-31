@@ -1,5 +1,5 @@
 name: Jetpack
-version: '1.3'
+version: '1.4'
 main: com.ashkiano.jetpack.Jetpack
 api-version: '1.16'
 author: AshKiano
