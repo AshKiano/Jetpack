@@ -3,9 +3,7 @@ package com.ashkiano.jetpack;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-//TODO zároveň opravit aby když drží tlačítko, tak se stále aplikoval boost
-//TODO změnit sneak event na jump
-//TODO přidat plamínky když se použije
+//TODO přidat efekt hovermode jako /fly
 //TODO udělat možnost aby jetpack spotřebovával třeba lávu nebo něco jiného
 //TODO možnost craftitelného paliva se speciálním lore, které bude spotřebovávat
 public class Jetpack extends JavaPlugin {

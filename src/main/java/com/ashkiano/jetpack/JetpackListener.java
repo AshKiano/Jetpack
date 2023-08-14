@@ -1,5 +1,6 @@
 package com.ashkiano.jetpack;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
@@ -12,6 +13,8 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class JetpackListener implements Listener {
@@ -26,14 +29,14 @@ public class JetpackListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getWhoClicked() instanceof Player) {
             Player player = (Player) event.getWhoClicked();
-            checkForJetpack(player);
+            Bukkit.getScheduler().runTaskLater(this.plugin, () -> checkForJetpack(player), 1L);
         }
     }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        checkForJetpack(player);
+        Bukkit.getScheduler().runTaskLater(this.plugin, () -> checkForJetpack(player), 1L);
     }
 
     @EventHandler
@@ -46,8 +49,18 @@ public class JetpackListener implements Listener {
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
         if (event.isSneaking() && isWearingJetpack(player)) {
-            player.setVelocity(player.getLocation().getDirection().multiply(2).setY(1));
-            spawnFlameParticles(player);
+            // Spustí úkol, který bude pravidelně aktualizovat rychlost hráče
+            new BukkitRunnable() {
+                public void run() {
+                    if (player.isSneaking() && isWearingJetpack(player)) {
+                        player.setVelocity(player.getLocation().getDirection().multiply(2).setY(1));
+                        spawnFlameParticles(player);
+                    } else {
+                        // Pokud hráč přestane skrčit nebo sundá jetpack, zruší se úkol
+                        cancel();
+                    }
+                }
+            }.runTaskTimer(plugin, 0L, 1L); // Spustí úkol každý tik (20x za sekundu)
         }
     }
 
@@ -71,8 +84,15 @@ public class JetpackListener implements Listener {
 
             if (meta == null) return;
             if (meta.hasLore() && meta.getLore().contains(JetpackCommand.JETPACK_LORE)) {
+                if (!player.hasPotionEffect(PotionEffectType.SLOW_FALLING)) {
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 1, false, false, false));
+                }
                 return;
             }
+        }
+
+        if (player.hasPotionEffect(PotionEffectType.SLOW_FALLING)) {
+            player.removePotionEffect(PotionEffectType.SLOW_FALLING);
         }
     }
 
