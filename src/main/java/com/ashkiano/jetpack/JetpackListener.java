@@ -85,7 +85,7 @@ public class JetpackListener implements Listener {
             if (meta == null) return;
             if (meta.hasLore() && meta.getLore().contains(JetpackCommand.JETPACK_LORE)) {
                 if (!player.hasPotionEffect(PotionEffectType.SLOW_FALLING)) {
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 1, false, false, false));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 0, false, false, false));
                 }
                 return;
             }
