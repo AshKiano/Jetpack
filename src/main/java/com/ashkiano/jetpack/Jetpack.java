@@ -23,10 +23,13 @@ public class Jetpack extends JavaPlugin {
         permission = config.getString("command_permission", "jetpack");
         getCommand("jetpack").setExecutor(new JetpackCommand(permission));
         getServer().getPluginManager().registerEvents(new JetpackListener(this), this);
+        boolean showDonateMessage = getConfig().getBoolean("ShowDonateMessage", true);
 
         Metrics metrics = new Metrics(this, 19172);
 
-        this.getLogger().info("Thank you for using the Jetpack plugin! If you enjoy using this plugin, please consider making a donation to support the development. You can donate at: https://donate.ashkiano.com");
+        if (showDonateMessage) {
+            this.getLogger().info("Thank you for using the Jetpack plugin! If you enjoy using this plugin, please consider making a donation to support the development. You can donate at: https://donate.ashkiano.com");
+        }
 
         checkForUpdates();
     }
